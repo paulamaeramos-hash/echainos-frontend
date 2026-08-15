@@ -22,7 +22,7 @@ export default function Register({ onRegisterSuccess, onSwitchToLogin }: Registe
 
     try {
       // Direct absolute URL to your Express Backend on port 5000
-      const response = await fetch('http://localhost:5000/api/auth/register', {
+      const response = await fetch('https://echainos-backend.onrender.com//api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
