@@ -34,7 +34,6 @@ export async function getEvidenceChain(evidenceId?: string) {
   const url = evidenceId 
     ? `${API_BASE_URL}/evidence?evidenceId=${encodeURIComponent(evidenceId)}`
     : `${API_BASE_URL}/evidence`;
-    
   const response = await fetch(url);
   return response.json();
 }
