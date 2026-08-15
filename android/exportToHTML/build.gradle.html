@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>build.gradle</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bcbec4;}
+.s1 { color: #6aab73;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #7a7e85;}
+.s5 { color: #cf8e6d;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+build.gradle</font>
+</center></td></tr></table>
+<pre><span class="s0">apply plugin: </span><span class="s1">'com.android.application'</span>
+
+<span class="s0">android </span><span class="s2">{</span>
+    <span class="s0">namespace </span><span class="s2">= </span><span class="s1">&quot;com.ecocsytem.app&quot;</span>
+    <span class="s0">compileSdk </span><span class="s2">= </span><span class="s0">rootProject.ext.compileSdkVersion</span>
+    <span class="s0">defaultConfig </span><span class="s2">{</span>
+        <span class="s0">applicationId </span><span class="s1">&quot;com.ecocsytem.app&quot;</span>
+        <span class="s0">minSdkVersion rootProject.ext.minSdkVersion</span>
+        <span class="s0">targetSdkVersion rootProject.ext.targetSdkVersion</span>
+        <span class="s0">versionCode </span><span class="s3">1</span>
+        <span class="s0">versionName </span><span class="s1">&quot;1.0&quot;</span>
+        <span class="s0">testInstrumentationRunner </span><span class="s1">&quot;androidx.test.runner.AndroidJUnitRunner&quot;</span>
+        <span class="s0">aaptOptions </span><span class="s2">{</span>
+             <span class="s4">// Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.</span>
+             <span class="s4">// Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61</span>
+            <span class="s0">ignoreAssetsPattern </span><span class="s2">= </span><span class="s1">'!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+    <span class="s0">buildTypes </span><span class="s2">{</span>
+        <span class="s0">release </span><span class="s2">{</span>
+            <span class="s0">minifyEnabled </span><span class="s5">false</span>
+            <span class="s0">proguardFiles getDefaultProguardFile</span><span class="s2">(</span><span class="s1">'proguard-android.txt'</span><span class="s2">)</span><span class="s0">, </span><span class="s1">'proguard-rules.pro'</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s0">repositories </span><span class="s2">{</span>
+    <span class="s0">flatDir</span><span class="s2">{</span>
+        <span class="s0">dirs </span><span class="s1">'../capacitor-cordova-android-plugins/src/main/libs'</span><span class="s0">, </span><span class="s1">'libs'</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s0">dependencies </span><span class="s2">{</span>
+    <span class="s0">implementation fileTree</span><span class="s2">(</span><span class="s0">include: </span><span class="s2">[</span><span class="s1">'*.jar'</span><span class="s2">]</span><span class="s0">, dir: </span><span class="s1">'libs'</span><span class="s2">)</span>
+    <span class="s0">implementation </span><span class="s1">&quot;androidx.appcompat:appcompat:</span><span class="s0">$androidxAppCompatVersion</span><span class="s1">&quot;</span>
+    <span class="s0">implementation </span><span class="s1">&quot;androidx.coordinatorlayout:coordinatorlayout:</span><span class="s0">$androidxCoordinatorLayoutVersion</span><span class="s1">&quot;</span>
+    <span class="s0">implementation </span><span class="s1">&quot;androidx.core:core-splashscreen:</span><span class="s0">$coreSplashScreenVersion</span><span class="s1">&quot;</span>
+    <span class="s0">implementation project</span><span class="s2">(</span><span class="s1">':capacitor-android'</span><span class="s2">)</span>
+    <span class="s0">testImplementation </span><span class="s1">&quot;junit:junit:</span><span class="s0">$junitVersion</span><span class="s1">&quot;</span>
+    <span class="s0">androidTestImplementation </span><span class="s1">&quot;androidx.test.ext:junit:</span><span class="s0">$androidxJunitVersion</span><span class="s1">&quot;</span>
+    <span class="s0">androidTestImplementation </span><span class="s1">&quot;androidx.test.espresso:espresso-core:</span><span class="s0">$androidxEspressoCoreVersion</span><span class="s1">&quot;</span>
+    <span class="s0">implementation project</span><span class="s2">(</span><span class="s1">':capacitor-cordova-android-plugins'</span><span class="s2">)</span>
+<span class="s2">}</span>
+
+<span class="s0">apply from: </span><span class="s1">'capacitor.build.gradle'</span>
+
+<span class="s5">try </span><span class="s2">{</span>
+    <span class="s5">def </span><span class="s0">servicesJSON </span><span class="s2">= </span><span class="s0">file</span><span class="s2">(</span><span class="s1">'google-services.json'</span><span class="s2">)</span>
+    <span class="s5">if </span><span class="s2">(</span><span class="s0">servicesJSON.text</span><span class="s2">) {</span>
+        <span class="s0">apply plugin: </span><span class="s1">'com.google.gms.google-services'</span>
+    <span class="s2">}</span>
+<span class="s2">} </span><span class="s5">catch</span><span class="s2">(</span><span class="s0">Exception e</span><span class="s2">) {</span>
+    <span class="s0">logger.info</span><span class="s2">(</span><span class="s1">&quot;google-services.json not found, google-services plugin not applied. Push Notifications won't work&quot;</span><span class="s2">)</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

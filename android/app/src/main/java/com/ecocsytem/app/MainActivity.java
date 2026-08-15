@@ -1,0 +1,5 @@
+package com.ecocsytem.app;
+
+import com.getcapacitor.BridgeActivity;
+
+public class MainActivity extends BridgeActivity {}
