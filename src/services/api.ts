@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = 'https://echainos-backend.onrender.com';
 
 // 1. User Authentication
 export async function loginUser(identifier: string, password: string) {
