@@ -17,7 +17,7 @@ export default function Login({ onLoginSuccess, onSwitchToRegister }: LoginProps
     setLoading(true);
 
     try {
-      const response = await fetch('https://echainos-backend.onrender.com//api/auth/login', {
+      const response = await fetch('https://echainos-backend.onrender.com/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

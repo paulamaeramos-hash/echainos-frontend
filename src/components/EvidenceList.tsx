@@ -42,7 +42,7 @@ export default function EvidenceList({
     const fetchAllEvidence = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('http://https://echainos-backend.onrender.com/api/evidence');
+        const response = await fetch('https://echainos-backend.onrender.com/api/evidence');
         const data = await response.json();
 
         if (response.ok && Array.isArray(data)) {

@@ -13,7 +13,7 @@ export default function COCTimeline() {
   const fetchLogs = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://https://echainos-backend.onrender.com/api/timeline');
+      const response = await fetch('https://echainos-backend.onrender.com/api/timeline');
       if (response.ok) {
         const data = await response.json();
         setLogs(data.logs || []);

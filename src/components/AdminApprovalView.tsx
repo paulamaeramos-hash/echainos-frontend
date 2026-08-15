@@ -16,7 +16,7 @@ export default function AdminApprovalView({ onBack }: { onBack: () => void }) {
 
   const fetchPendingUsers = async () => {
     try {
-      const res = await fetch('http://https://echainos-backend.onrender.com/api/admin/pending-users');
+      const res = await fetch('https://echainos-backend.onrender.com/api/admin/pending-users');
       const data = await res.json();
       setPendingUsers(data);
     } catch (err) {
@@ -30,7 +30,7 @@ export default function AdminApprovalView({ onBack }: { onBack: () => void }) {
 
   const handleApprove = async (userId: string, name: string) => {
     try {
-      const res = await fetch('http://https://echainos-backend.onrender.com/api/admin/approve-user', {
+      const res = await fetch('https://echainos-backend.onrender.com/api/admin/approve-user', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId }),
@@ -45,7 +45,7 @@ export default function AdminApprovalView({ onBack }: { onBack: () => void }) {
 
   const handleReject = async (userId: string, name: string) => {
     try {
-      const res = await fetch('http://https://echainos-backend.onrender.com/api/admin/reject-user', {
+      const res = await fetch('https://echainos-backend.onrender.com/api/admin/reject-user', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId }),

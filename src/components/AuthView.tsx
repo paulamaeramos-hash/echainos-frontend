@@ -30,7 +30,7 @@ export default function AuthView({ onAuthSuccess }: AuthViewProps) {
     clearMessages();
 
     try {
-      const res = await fetch('http://https://echainos-backend.onrender.com/api/login', {
+      const res = await fetch('https://echainos-backend.onrender.com/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ identifier: loginIdentifier, password: loginPassword })
@@ -53,7 +53,7 @@ export default function AuthView({ onAuthSuccess }: AuthViewProps) {
     clearMessages();
 
     try {
-      const res = await fetch('http://https://echainos-backend.onrender.com/api/register', {
+      const res = await fetch('https://echainos-backend.onrender.com/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
